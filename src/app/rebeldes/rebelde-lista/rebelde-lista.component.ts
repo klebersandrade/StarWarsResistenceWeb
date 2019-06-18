@@ -17,20 +17,15 @@ export class RebeldeListaComponent implements OnInit {
   }
 
   ngOnInit() {
-    // $(document).ready(() => {
-    //   $('#dataTable').DataTable({
-    //     language: {
-    //       url: './assets/datatables_language.json'
-    //     }
-    //   });
-    // });
     this.service.listagem().subscribe((dados: any) => {
+      $(document).ready(() => {
+        $('#dataTable').DataTable({
+          language: {
+            url: './assets/datatables_language.json'
+          }
+        });
+      });
       this.rebeldes = dados.content;
-
     });
   }
-
-  // ngAfterViewInit() {
-  //   
-  // }
 }

@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule} from '@angular/forms';
 
 import { RebeldeRoutingModule } from './rebelde-routing.module';
 
@@ -9,6 +10,7 @@ import { RebeldeNovoComponent } from './rebelde-novo/rebelde-novo.component';
 import { RebeldeEditarComponent } from './rebelde-editar/rebelde-editar.component';
 import { RebeldeReportarComponent } from './rebelde-reportar/rebelde-reportar.component';
 import { RebeldeLocalizarComponent } from './rebelde-localizar/rebelde-localizar.component';
+import { NumberOnlyDirective } from '../diretivas/number-only.directive';
 
 @NgModule({
   declarations: [
@@ -17,11 +19,13 @@ import { RebeldeLocalizarComponent } from './rebelde-localizar/rebelde-localizar
     RebeldeNovoComponent,
     RebeldeEditarComponent,
     RebeldeReportarComponent,
-    RebeldeLocalizarComponent
+    RebeldeLocalizarComponent,
+    NumberOnlyDirective
   ],
   imports: [
-    CommonModule,
-    RebeldeRoutingModule
+  CommonModule,
+    RebeldeRoutingModule,
+    FormsModule
   ],
   exports: [
 

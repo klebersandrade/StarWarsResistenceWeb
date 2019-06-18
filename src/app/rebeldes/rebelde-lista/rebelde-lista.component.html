@@ -23,15 +23,6 @@
             <th></th>
           </tr>
         </thead>
-        <tfoot>
-          <tr>
-            <th>Id</th>
-            <th>Nome</th>
-            <th>Gênero</th>
-            <th>Idade</th>
-            <th></th>
-          </tr>
-        </tfoot>
         <tbody>
           <tr *ngFor="let rebelde of rebeldes">
             <td>{{rebelde.id}}</td>
@@ -45,11 +36,11 @@
               </a>
               <div class="dropdown-menu dropdown-menu-right shadow" aria-labelledby="actionTable">
                 <a class="dropdown-item" href="#">
-                  <i class="fas fa-info fa-sm fa-fw mr-2 text-gray-400"></i>
+                  <i class="fas fa-map-marker-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                   Informar Localização
                 </a>
                 <a class="dropdown-item" href="#">
-                  <i class="fas fa-trash fa-sm fa-fw mr-2 text-gray-400"></i>
+                  <i class="fas fa-flag-checkered fa-sm fa-fw mr-2 text-gray-400"></i>
                   Reportar como traidor
                 </a>
               </div>
