@@ -1,0 +1,94 @@
+<!-- Page Heading -->
+<h1 class="h3 mb-2 text-gray-800">Rebeldes - Lista</h1>
+
+<!-- DataTales Example -->
+<div class="card shadow mb-4">
+  <div class="card-header py-3">
+    <a routerLink="/rebeldes/novo" class="btn btn-primary btn-icon-split" style="float: right">
+      <span class="icon text-white-50">
+        <i class="fas fa-file"></i>
+      </span>
+      <span class="text">Novo registro</span>
+    </a>
+  </div>
+  <div class="card-body">
+    <div class="table-responsive">
+      <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+        <thead>
+          <tr>
+            <th>Id</th>
+            <th>Nome</th>
+            <th>Gênero</th>
+            <th>Idade</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let rebelde of rebeldes"
+          [ngClass]="{clsTraidor: rebelde.traidor}">
+            <td>{{rebelde.id}}</td>
+            <td>{{rebelde.nome}}</td>
+            <td>{{rebelde.genero}}</td>
+            <td>{{rebelde.idade}}</td>
+            <td style="width: 50px">
+              <a class="btn btn-info dropdown-toggle" href="#" id="actionTable" role="button" data-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="false" *ngIf="!rebelde.traidor">
+                Ações
+              </a>
+              <div class="dropdown-menu dropdown-menu-right shadow" aria-labelledby="actionTable"*ngIf="!rebelde.traidor">
+                  <a class="dropdown-item" data-toggle="modal" data-target="#modalInventario" href="#" (click)="getInventario(rebelde.id)">
+                    <i class="fas fa-check fa-sm fa-fw mr-2 text-gray-400"></i>
+                    Exibir Inventário
+                  </a>
+                <a routerLink="/rebeldes/localizar/{{rebelde.id}}" class="dropdown-item" href="#">
+                  <i class="fas fa-map-marker-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                  Informar Localização
+                </a>
+                <a routerLink="/rebeldes/reportar/{{rebelde.id}}" class="dropdown-item" href="#">
+                  <i class="fas fa-flag-checkered fa-sm fa-fw mr-2 text-gray-400"></i>
+                  Reportar como traidor
+                </a>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="modalInventario" tabindex="-1" role="dialog" aria-labelledby="TituloModalLongoExemplo" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Inventário de {{inventario.rebelde}}</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                  <thead>
+                    <tr>
+                      <th>Item</th>
+                      <th>Quantidade</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let item of inventario.itens">
+                      <td>{{item.item}}</td>
+                      <td>{{item.quantidade}}</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+          <!-- <button type="button" class="btn btn-primary">Salvar mudanças</button> -->
+        </div>
+      </div>
+    </div>
+  </div>

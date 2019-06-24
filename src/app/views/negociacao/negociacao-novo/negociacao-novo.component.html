@@ -1,0 +1,168 @@
+<!-- Page Heading -->
+<h1 class="h3 mb-2 text-gray-800">Negociações - Novo</h1>
+
+<div class="card shadow mb-4">
+  <div class="card-header py-3">
+    <button (click)="salvar()" class="btn btn-success btn-icon-split" style="float: right; margin-left: 10px">
+      <span class="icon text-white-50">
+        <i class="fas fa-save"></i>
+      </span>
+      <span class="text">Salvar</span>
+    </button>
+    <a routerLink="/negociacoes/lista" class="btn btn-danger btn-icon-split" style="float: right">
+      <span class="icon text-white-50">
+        <i class="fas fa-ban"></i>
+      </span>
+      <span class="text">Cancelar</span>
+    </a>
+  </div>
+  <div class="row">
+    <div class="col-xl-6">
+      <div class="card shadow mb-4">
+
+        <!-- Card Body -->
+        <div class="card-body">
+          <div class="form-group row">
+            <div class="col-sm-6">
+              <label for="vendedor">Vendedor</label>
+              <select class="form-control" [(ngModel)]="negociacao.vendedor" id="vendedor" name="vendedor">
+                <option value="0" selected>Selecione um Vendedor</option>
+                <option *ngFor="let reb of rebeldes" [value]="reb.id">
+                  {{reb.id +' - '+ reb.nome}}
+                </option>
+              </select>
+            </div>
+          </div>
+          <hr>
+          <h5>Itens Vendedor</h5>
+          <div class="form-group row">
+            <div class="col-sm-5">
+              <label for="itemVenda">Item</label>
+              <select class="form-control" name="itemVenda" selected [(ngModel)]="itemVenda.item">
+                <option value="Selecione">Selecione o Item</option>
+                <option value="Arma">Arma</option>
+                <option value="Municao">Munição</option>
+                <option value="Agua">Água</option>
+                <option value="Comida">Comida</option>
+              </select>
+            </div>
+            <div class="col-sm-4">
+              <label for="quantidadeVenda">Quantidade</label>
+              <input appNumberOnly class="form-control" name="quantidadeVenda" placeholder="Quantidade" maxlength="3"
+                [(ngModel)]="itemVenda.quantidade">
+            </div>
+            <div class="col-sm-3">
+              <label for="btAddVenda"> {{'&nbsp;'}}</label>
+              <button name="btAddVenda" type="button" (click)="addItemVenda()" class="btn btn-info btn-icon-split">
+                <span class="icon text-white-50">
+                  <i class="fas fa-plus"></i>
+                </span>
+                <span class="text">Add{{'&nbsp;'}}</span>
+              </button>
+            </div>
+          </div>
+          <div class="form-group row">
+            <div class="col-sm-12">
+              <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                  <thead>
+                    <tr>
+                      <th>Item</th>
+                      <th>Quantidade</th>
+                      <th></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let item of negociacao.itensVendedor">
+                      <td>{{item.item}}</td>
+                      <td>{{item.quantidade}}</td>
+                      <td style="width: 50px">
+                        <button type="button" class="btn btn-warning" (click)="deletaItemVenda(item)">
+                          Deletar
+                        </button>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-xl-6">
+      <div class="card shadow mb-6">
+
+        <!-- Card Body -->
+        <div class="card-body">
+          <div class="form-group row">
+            <div class="col-sm-6">
+              <label for="vendedor">Comprador</label>
+              <select class="form-control" [(ngModel)]="negociacao.comprador" id="comprador" name="comprador">
+                <option value="0" selected>Selecione um Comprador</option>
+                <option *ngFor="let reb of rebeldes" [value]="reb.id">
+                  {{reb.id +' - '+ reb.nome}}
+                </option>
+              </select>
+            </div>
+          </div>
+          <hr>
+          <h5>Itens Comprador</h5>
+          <div class="form-group row">
+            <div class="col-sm-5">
+              <label for="itemCompra">Item</label>
+              <select class="form-control" name="itemCompra" selected [(ngModel)]="itemCompra.item">
+                <option value="Selecione">Selecione o Item</option>
+                <option value="Arma">Arma</option>
+                <option value="Municao">Munição</option>
+                <option value="Agua">Água</option>
+                <option value="Comida">Comida</option>
+              </select>
+            </div>
+            <div class="col-sm-4">
+              <label for="quantidadeCompra">Quantidade</label>
+              <input appNumberOnly class="form-control" name="quantidadeCompra" placeholder="Quantidade" maxlength="3"
+                [(ngModel)]="itemCompra.quantidade">
+            </div>
+            <div class="col-sm-3">
+              <label for="btAddCompra"> {{'&nbsp;'}}</label>
+              <button name="btAddCompra" type="button" (click)="addItemCompra()" class="btn btn-info btn-icon-split">
+                <span class="icon text-white-50">
+                  <i class="fas fa-plus"></i>
+                </span>
+                <span class="text">Add{{'&nbsp;'}}</span>
+              </button>
+            </div>
+          </div>
+          <div class="form-group row">
+            <div class="col-sm-12">
+              <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                  <thead>
+                    <tr>
+                      <th>Item</th>
+                      <th>Quantidade</th>
+                      <th></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let item of negociacao.itensComprador">
+                      <td>{{item.item}}</td>
+                      <td>{{item.quantidade}}</td>
+                      <td style="width: 50px">
+                        <button type="button" class="btn btn-warning" (click)="deletaItemCompra(item)">
+                          Deletar
+                        </button>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

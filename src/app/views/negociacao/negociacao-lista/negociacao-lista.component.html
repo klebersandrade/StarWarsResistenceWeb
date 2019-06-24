@@ -1,0 +1,36 @@
+<!-- Page Heading -->
+<h1 class="h3 mb-2 text-gray-800">Negociações - Lista</h1>
+
+<!-- DataTales Example -->
+<div class="card shadow mb-4">
+  <div class="card-header py-3">
+    <a routerLink="/negociacoes/novo" class="btn btn-primary btn-icon-split" style="float: right">
+      <span class="icon text-white-50">
+        <i class="fas fa-file"></i>
+      </span>
+      <span class="text">Novo registro</span>
+    </a>
+  </div>
+  <div class="card-body">
+    <div class="table-responsive">
+      <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+        <thead>
+          <tr>
+            <th>Id</th>
+            <th>Data</th>
+            <th>Vendedor</th>
+            <th>Comprador</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let negociacao of negociacoes">
+            <td>{{negociacao.id}}</td>
+            <td>{{negociacao.criacao_Dt | date: 'dd/MM/yyy HH:mm:ss'}}</td>
+            <td>{{negociacao.vendedor_Nome}}</td>
+            <td>{{negociacao.comprador_Nome}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

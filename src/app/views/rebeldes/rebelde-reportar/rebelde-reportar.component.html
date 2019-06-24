@@ -1,0 +1,64 @@
+<!-- Page Heading -->
+<h1 class="h3 mb-2 text-gray-800">Rebeldes - Reportar como Traidor</h1>
+
+<div class="card shadow mb-4">
+  <div class="card-header py-3">
+    <button (click)="salvar()" class="btn btn-success btn-icon-split" style="float: right; margin-left: 10px">
+      <span class="icon text-white-50">
+        <i class="fas fa-save"></i>
+      </span>
+      <span class="text">Salvar</span>
+    </button>
+    <a routerLink="/rebeldes/lista" class="btn btn-danger btn-icon-split" style="float: right">
+      <span class="icon text-white-50">
+        <i class="fas fa-ban"></i>
+      </span>
+      <span class="text">Cancelar</span>
+    </a>
+  </div>
+  <div class="card-body">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="p-5">
+          <form>
+            <div class="form-group row">
+              <div class="col-sm-6">
+                <label for="nome">Nome</label>
+                <input type="text" class="form-control" name="nome" placeholder="Nome" maxlength="50" disabled
+                  [(ngModel)]="rebelde.nome">
+              </div>
+              <div class="col-sm-3">
+                <label for="genero">Gênero</label>
+                <input type="text" class="form-control" name="genero" placeholder="Nome" maxlength="50" disabled
+                  [(ngModel)]="rebelde.genero">
+              </div>
+              <div class="col-sm-3">
+                <label for="idade">Idade</label>
+                <input appNumberOnly class="form-control" placeholder="Idade" maxlength="3" disabled
+                  [(ngModel)]="rebelde.idade" name=idade>
+              </div>
+            </div>
+            <hr>
+            <h4>Informações</h4>
+            <div class="form-group row">
+              <div class="col-sm-6">
+                <label for="genero">Delator</label>
+                <select #seleciona class="form-control" [(ngModel)]="traidorAdd.delator" id="delator" name="delator">
+                  <option value="0" selected>Selecione um Delator</option>
+                  <option *ngFor="let reb of rebeldes" [value]="reb.id">
+                    {{reb.id +' - '+ reb.nome}}
+                  </option>
+                </select>
+              </div>
+              <div class="col-sm-6">
+                <label for="nome">Motivo</label>
+                <input type="text" class="form-control" name="motivo" placeholder="Motivo" maxlength="50"
+                  [(ngModel)]="traidorAdd.motivo">
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

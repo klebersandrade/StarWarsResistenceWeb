@@ -3,4 +3,5 @@ export interface Rebelde {
     nome: string;
     idade: number;
     genero: string;
+    traidor: boolean;
 }
