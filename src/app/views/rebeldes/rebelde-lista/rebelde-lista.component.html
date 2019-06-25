@@ -40,6 +40,10 @@
                     <i class="fas fa-check fa-sm fa-fw mr-2 text-gray-400"></i>
                     Exibir Inventário
                   </a>
+                  <a class="dropdown-item" data-toggle="modal" data-target="#modalInventario" href="#" (click)="getLocalizacao(rebelde.id)">
+                    <i class="fas fa-check fa-sm fa-fw mr-2 text-gray-400"></i>
+                    Histórico de Localizações
+                  </a>
                 <a routerLink="/rebeldes/localizar/{{rebelde.id}}" class="dropdown-item" href="#">
                   <i class="fas fa-map-marker-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                   Informar Localização
@@ -62,7 +66,7 @@
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title">Inventário de {{inventario.rebelde}}</h5>
+          <h5 class="modal-title">{{fModal.titulo}} de {{fModal.rebelde}}</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -72,14 +76,12 @@
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                   <thead>
                     <tr>
-                      <th>Item</th>
-                      <th>Quantidade</th>
+                      <th *ngFor="let coluna of fModal.colunas">{{coluna}}</th>
                     </tr>
                   </thead>
                   <tbody>
-                    <tr *ngFor="let item of inventario.itens">
-                      <td>{{item.item}}</td>
-                      <td>{{item.quantidade}}</td>
+                    <tr *ngFor="let item of fModal.itens">
+                      <td *ngFor="let campo of fModal.campos">{{item[campo]}}</td>
                     </tr>
                   </tbody>
                 </table>

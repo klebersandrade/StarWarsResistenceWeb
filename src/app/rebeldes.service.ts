@@ -16,7 +16,7 @@ export class RebeldesService {
 
   constructor(private http: HttpClient) { }
 
-  private readonly API = 'http://192.168.0.200:8080/';
+  private readonly API = 'http://192.168.0.143:8080/';
 
   pegar(id: any) {
     return this.http.get<Rebelde>(this.API + 'rebeldes/' + id);
@@ -56,5 +56,9 @@ export class RebeldesService {
 
   getDashboard() {
     return this.http.get<Dashboard>(this.API + 'relatorios/dashboard');
+  }
+
+  getLocalizacoes(rebeldeId: number) {
+    return this.http.get<Localizacao[]>(this.API + 'rebeldes/localizacoes/' + rebeldeId);
   }
 }

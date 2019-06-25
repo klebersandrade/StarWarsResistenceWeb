@@ -23,6 +23,8 @@ export class RebeldeLocalizarComponent implements OnInit, OnDestroy {
   };
 
   local: Localizacao = {
+    alteracaoDt: new Date(),
+    criacaoDt: new Date(),
     id: 0,
     latitude: 0,
     longetude: 0,
@@ -67,8 +69,8 @@ export class RebeldeLocalizarComponent implements OnInit, OnDestroy {
     if (!this.local.longetude || this.local.longetude === 0) {
       return this.message.msgWarn('Atenção', 'A Longetude não foi informada!');
     }
-    this.local.latitude = parseFloat(this.local.latitude.toString());
-    this.local.longetude = parseFloat(this.local.longetude.toString());
+    this.local.latitude = parseFloat(this.local.latitude.toString().replace(',', '.'));
+    this.local.longetude = parseFloat(this.local.longetude.toString().replace(',', '.'));
 
     this.service.setaLocalizacao(this.rebelde.id, this.local).subscribe((retorno: Localizacao) => {
       this.message.msgSuccess('Sucesso', 'Localização salva com Sucesso!');
