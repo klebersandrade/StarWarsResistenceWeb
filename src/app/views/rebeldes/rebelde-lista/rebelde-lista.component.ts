@@ -77,10 +77,10 @@ export class RebeldeListaComponent implements OnInit {
       this.message.msgErro('Erro', erro.error.message);
     });
     this.service.getLocalizacoes(rebelde).subscribe((dados: Localizacao[]) => {
-      dados.forEach(item => {
-        item.latitude = parseFloat(item.latitude.toFixed(2));
-        item.longetude = parseFloat(item.longetude.toFixed(2));
-      });
+      // dados.forEach(item => {
+      //   item.latitude = parseFloat(item.latitude.toFixed(2));
+      //   item.longetude = parseFloat(item.longetude.toFixed(2));
+      // });
       this.fModal.itens = dados;
     }, (erro: HttpErrorResponse) => {
       this.message.msgErro('Erro', erro.error.message);
